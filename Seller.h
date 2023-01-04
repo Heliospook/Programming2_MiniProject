@@ -3,6 +3,7 @@
 
 #include<bits/stdc++.h>
 #include"Globals.h"
+#include"Products.h"
 
 using namespace std;
 
@@ -19,9 +20,8 @@ public:
 	virtual void add_platform(Platform* the_platform){};
 
 	// change return type to product after implementation of product
-	virtual string find_products(Globals::Category which_one){
-		Globals global1;
-		return global1.get_category_name(which_one);  // for test purpose
+	virtual vector<Products*> find_products(Globals::Category which_one){
+		
 	};
 
 	virtual bool buy_product(string product_id, int quantity) {return false;};

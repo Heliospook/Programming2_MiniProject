@@ -2,6 +2,7 @@
 #include "DemoPlatform.h"
 #include "Seller.h"
 #include "Globals.h"
+#include "Products.h"
 using namespace std;
 
 bool DemoPlatform::add_seller(Seller* seller) {
@@ -15,13 +16,19 @@ bool DemoPlatform::add_seller(Seller* seller) {
 
 void DemoPlatform::process_requests() {
     Globals global;
-    freopen(global.to_platfrom.c_str(), "r", stdin);
+    cerr << "hi" << endl;
+    ifstream file(global.to_platfrom);
+    cerr << "hello" << endl;
     freopen(global.from_platform.c_str(), "w", stdout);
+    cerr << "wassup" << endl;
     string s;
-    getline(cin,s);
+    cerr << "nothing" << endl;
+
 
     // processing requests
-    while (s.size()) {
+    while (getline(file,s)) {
+        cerr << s.size() << "\n";
+        cerr << s << "\n";
         vector<string> v;
         istringstream ss(s);
         string temp;
@@ -30,15 +37,11 @@ void DemoPlatform::process_requests() {
             v.push_back(temp);
         }
 
-        if (done_req.find(v[2]) != done_req.end()) {
-            getline(cin,s);
-            continue;
-        }
-
         if (v[2] == "Start") {
             cout << v[0] << " " << v[1] << " ";  // prints <Portal ID> <RequestID>
             for (Globals::Category cat = Globals::Category::Enum_start; cat != Globals::Category::Enum_end; cat = static_cast<Globals::Category>(static_cast<int>(cat) + 1)) {
-                cout << global.get_category_name(cat) << " ";
+                if (cat != Globals::Category::Enum_start) cerr << global.get_category_name(cat) << "\n";
+                if (cat != Globals::Category::Enum_start)cout << global.get_category_name(cat) << " ";
 		    }
             cout << "\n";
         }
@@ -74,8 +77,7 @@ void DemoPlatform::process_requests() {
             }
         }
 
-        done_req[v[1]] = true;
-
         getline(cin,s);
+        cerr << s << "\n";
     }
 }

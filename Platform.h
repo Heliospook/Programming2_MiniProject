@@ -8,12 +8,12 @@ class Seller;
 using namespace std;
 
 class Platform {
-private:
+protected:
 	vector<Seller*> sellers;
 
 public:
-	bool add_seller(Seller* seller);
-	void process_requests();
+	virtual bool add_seller(Seller* seller){};
+	virtual void process_requests(){};
 };
 
 #endif
