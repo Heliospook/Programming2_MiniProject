@@ -1,5 +1,5 @@
 #ifndef SELLER016_h
-#define SELLER_H
+#define SELLER016_H
 
 #include<bits/stdc++.h>
 #include"Seller.h"
@@ -15,6 +15,7 @@ private:
 public:
     Seller016(string id);
     void add_platform(Platform* the_platform) override;
+    void add_product(Products* prod) override;
     vector<Products*> find_products(Globals::Category which_one) override;
     bool buy_product(string product_id, int quantity) override;
 };

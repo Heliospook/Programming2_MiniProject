@@ -19,10 +19,9 @@ public:
 
 	virtual void add_platform(Platform* the_platform){};
 
-	// change return type to product after implementation of product
-	virtual vector<Products*> find_products(Globals::Category which_one){
-		
-	};
+	virtual void add_product(Products* prod){};
+
+	virtual vector<Products*> find_products(Globals::Category which_one){};
 
 	virtual bool buy_product(string product_id, int quantity) {return false;};
 

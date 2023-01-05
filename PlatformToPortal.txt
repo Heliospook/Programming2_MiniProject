@@ -1,13 +1,5 @@
-unqid1 1 Harry dkfjdk 45 3
-unqid1 1 Larry dfd 45 3
-unqid1 1 Aarry were 45 3
-unqid1 1 Zarry jdk 45 3
-unqid1 2 Harry dkfjdk 60 3
-unqid1 2 Larry dfd 45 3
-unqid1 2 Aarry were 200 3
-unqid1 2 Zarry jdk 3 3
-unqid1 4 Harry dkfjdk 60 3
-unqid1 4 Larry dfd 45 3
-unqid1 4 Aarry were 200 3
-unqid1 4 Zarry jdk 3 3
-unqid1 8 Success
+unqid1 4 book016 book1 69.69 69
+unqid1 4 book017 book2 69.699 690
+unqid1 4 book018 book3 69.6999 691
+unqid1 4 book019 book4 69.7 693
+unqid1 4 book020 book5 69.6969 6969
