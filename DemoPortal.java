@@ -18,11 +18,6 @@ public class DemoPortal extends Portal {
 		this.RequestId = 1;
 		PendingRequestsType = new HashMap<Integer, String>();
 		SortParam = new HashMap<Integer, String>();
-		try {
-			// in = new BufferedReader(new FileReader(Globals.fromPlatform));
-		} catch (Exception e) {
-			System.out.println("Some error occurred.");
-		}
 	}
 
 	public void processUserCommand(String command) {
@@ -48,6 +43,7 @@ public class DemoPortal extends Portal {
 		} catch (IOException e) {
 			System.out.println("IOException");
 		}
+		PendingRequestsType.put(RequestId, "Start");
 	}
 
 	private void AskForItems(String category, String parameter) {
@@ -100,11 +96,16 @@ public class DemoPortal extends Portal {
 			if(PendingRequestsType.get(reqId).equals("Buy")){
 				System.out.println(words[2]);
 				PendingRequestsType.remove(reqId);
-			}else{
+			}else if(PendingRequestsType.get(reqId).equals("List")){
 				if(products.get(reqId)==null){
 					products.put(reqId, new ArrayList<PortalProduct>());
 				}
 				products.get(reqId).add(new PortalProduct(words));
+			}else if(PendingRequestsType.get(reqId).equals("Start")){
+				for(int i=2;i<words.length;i++){
+					System.out.println(words[i]);
+				}
+				PendingRequestsType.remove(reqId);
 			}
 		}
 		for(Map.Entry<Integer, ArrayList<PortalProduct>> m : products.entrySet()){
