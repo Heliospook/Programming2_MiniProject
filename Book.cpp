@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Book::Book(string prod_id, string nam, float prc, int qnty) {
+Book::Book(string nam, string prod_id, float prc, int qnty) {
     product_id = prod_id;
     name = nam;
     price = prc;
@@ -12,7 +12,6 @@ Book::Book(string prod_id, string nam, float prc, int qnty) {
 }
 
 Globals::Category  Book::get_category() {
-    cerr << "book" << " " << category << endl;
     return category;
 }
 string Book::get_name() {

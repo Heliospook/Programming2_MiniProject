@@ -12,7 +12,6 @@ map<string, Globals::Category> Globals::string_to_category_map = {
 
 string Globals::get_category_name(Category c)
 {
-	cerr << c << " " << Mobile << " " << Book << endl;
 	switch (c)
 	{
 	case Mobile:
@@ -26,9 +25,7 @@ string Globals::get_category_name(Category c)
 
 Globals::Category Globals::get_category_enum(string s)
 {
-	cerr << s << endl;
 	Globals global;
 
-	cerr << global.get_category_name(string_to_category_map[s]) << endl;
 	return string_to_category_map[s];
 }

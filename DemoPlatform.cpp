@@ -20,12 +20,19 @@ void DemoPlatform::process_requests() {
     freopen(global.from_platform.c_str(), "w", stdout);
     string s;
 
+    vector<string> req;
+
+    while(getline(file,s)) {
+        req.push_back(s);
+    }
+
+    cerr << "req size : " << req.size() << endl;
 
     // processing requests
-    while (getline(file,s)) {
+    for (auto s1 : req) {
         
         vector<string> v;
-        istringstream ss(s);
+        istringstream ss(s1);
         string temp;
 
         while (ss >> temp) {
@@ -46,7 +53,6 @@ void DemoPlatform::process_requests() {
             for (Seller* seller : sellers) {
                 
                 vector<Products*> products = seller->find_products(category);
-                cerr << products.size() << endl;
                 for (auto prod : products) {
                     cout << v[0] << " " << v[1] << " ";  // prints <Portal ID> <RequestID>
                     cout << prod->get_name() << " " << prod->get_product_id() << " " << prod->get_price() << " " << prod->get_quantity() << "\n";
@@ -58,7 +64,7 @@ void DemoPlatform::process_requests() {
             int quantity;
             stringstream ss(v[4]);
             ss >> quantity;
-            cout << v[0] << " ";  // prints <Portal ID> <RequestID>
+            cout << v[0] << " " << v[1] << " ";  // prints <Portal ID> <RequestID>
             int flag = 0;
             for (Seller* seller : sellers) {
                 if (seller->buy_product(v[3], quantity)) {
@@ -72,6 +78,5 @@ void DemoPlatform::process_requests() {
             }
         }
 
-        getline(cin,s);
     }
 }

@@ -18,7 +18,6 @@ void Seller016::add_product(Products* prod) {
 vector<Products*> Seller016::find_products(Globals::Category which_one) {
     vector<Products*> filtered;
     Globals global;
-    cerr << global.get_category_name(which_one) << endl;
     for (auto prod : product_list) {
         if (prod->get_category() == which_one) {
             filtered.push_back(prod);

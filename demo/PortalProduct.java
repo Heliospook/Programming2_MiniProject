@@ -4,8 +4,7 @@ import ecomm.Globals;
 import ecomm.Product;
 import ecomm.Globals.Category;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.*;
 
 public class PortalProduct extends Product{
     private String Name, ProductID;
@@ -15,7 +14,7 @@ public class PortalProduct extends Product{
     public PortalProduct(String[] line){
         this.Name = line[2];
         this.ProductID = line[3];
-        this.Price = Integer.parseInt(line[4]);
+        this.Price = Float.parseFloat(line[4]);
         this.Quantity = Integer.parseInt(line[5]);
     }
 
