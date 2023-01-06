@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+// all of the common functions
 Globals::Category  Products::get_category() {
     return category;
 }

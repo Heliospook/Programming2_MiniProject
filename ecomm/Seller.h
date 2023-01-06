@@ -11,7 +11,7 @@ class Platform; // forward declaration to break the infinte space paradox
 
 class Seller {
 private:
-	string my_id;
+	string my_id;  // id of the seller
 public:
 	Seller(string id);
 

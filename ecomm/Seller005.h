@@ -12,11 +12,12 @@ using namespace std;
 class Seller005 : public Seller
 {
 private:
-    vector<Products *> product_list;
+    map<Globals::Category, vector<Products *>> category_to_list_map;
 
 public:
     Seller005(string id);
     void add_platform(Platform *the_platform) override;
+    void add_product(Products *prod, Globals::Category category) override;
     vector<Products *> find_products(Globals::Category which_one) override;
     bool buy_product(string product_id, int quantity) override;
 };

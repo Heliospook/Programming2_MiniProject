@@ -5,11 +5,13 @@
 
 class Products {
 protected:
+    // all of the common data
     string product_id, name;
     Globals::Category category = Globals::Category::Book;
     float price;
     int quantity;
 public:
+    // all of the common methods
     virtual Globals::Category get_category();
     virtual string get_name();
     virtual string get_product_id();

@@ -8,11 +8,10 @@ import java.util.*;
 import demo.PortalProduct;
 
 public class DemoPortal extends Portal {
-	private final String PortalId;
+	private final String PortalId; 
 	private int RequestId;
-	// private BufferedReader in;
-	private HashMap<Integer,String> PendingRequestsType;
-	private HashMap<Integer,String> SortParam; 
+	private HashMap<Integer,String> PendingRequestsType; // Map to store the type of each pending requests 
+	private HashMap<Integer,String> SortParam; // Map to store the sorting parameter for each pending list command
 
 	public DemoPortal(String PortalId) {
 		this.PortalId = PortalId;
@@ -95,7 +94,9 @@ public class DemoPortal extends Portal {
 			int reqId = Integer.parseInt(words[1]);
 			if(!PendingRequestsType.containsKey(reqId)) continue;
 			if(PendingRequestsType.get(reqId).equals("Buy")){
+				System.out.println();
 				System.out.println(words[2]);
+				System.out.println();
 				PendingRequestsType.remove(reqId);
 			}else if(PendingRequestsType.get(reqId).equals("List")){
 				if(products.get(reqId)==null){
@@ -103,19 +104,24 @@ public class DemoPortal extends Portal {
 				}
 				products.get(reqId).add(new PortalProduct(words));
 			}else if(PendingRequestsType.get(reqId).equals("Start")){
+				System.out.println();
 				for(int i=2;i<words.length;i++){
 					System.out.println(words[i]);
 				}
+				System.out.println();
 				PendingRequestsType.remove(reqId);
 			}
 		}
 		for(Map.Entry<Integer, ArrayList<PortalProduct>> m : products.entrySet()){
 			ArrayList<PortalProduct> pdts = m.getValue();
 			Collections.sort(pdts, new PortalProduct.ProductComp(SortParam.get(m.getKey())));
+			System.out.println();
 			for(PortalProduct pdt : pdts){
 				System.out.println(pdt);
 			}
+			System.out.println();
 			PendingRequestsType.remove(m.getKey());
+			SortParam.remove(m.getKey());
 		}
 	}
 }

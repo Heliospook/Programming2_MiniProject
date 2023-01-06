@@ -9,8 +9,8 @@ using namespace std;
 
 class Platform {
 protected:
-	vector<Seller*> sellers;
-	map<pair<string, string>,int> done_req;
+	vector<Seller*> sellers;  // list of all the sellers
+	map<pair<string, string>,int> done_req;  // keeps track of the request that was done in form <PortalId, RequestId>
 
 public:
 	virtual bool add_seller(Seller* seller){};

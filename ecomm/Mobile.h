@@ -10,7 +10,6 @@ class Mobile : public Products {
 
 public:
     Mobile(string prod_id, string nam, float prc, int qnty);
-    
 };
 
 

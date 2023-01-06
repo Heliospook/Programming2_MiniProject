@@ -1,4 +1,4 @@
-#ifndef SELLER022_h
+#ifndef SELLER022_H
 #define SELLER022_H
 
 #include <iostream>
@@ -15,8 +15,11 @@ using namespace std;
 
 class Seller022: public Seller {
 private:
+    //map product stores a map corresponding to each category
+    //the inner map has products stored against their product_id
     map<Globals::Category, map<string, Products*>> products;
 public:
+    //essential seller methods
     Seller022(string);
     void add_platform(Platform*) override;
     void add_product(Products* prod, Globals::Category category) override;

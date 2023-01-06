@@ -7,16 +7,15 @@ using namespace std;
 class Globals {
 public:
 	enum Category {
-		Enum_start,
+		Enum_start,  // dummy category for iterating purpose
 		Mobile,
 		Book,
-		Enum_end
+		Enum_end // dummy category for iterating purpose
 	};
 private:
-	static map<string,Category> string_to_category_map;
+	static map<string,Category> string_to_category_map;  // maps string to its corresponding category
 
 public:
-	Category category;
 
 	string get_category_name(Category c);
 	Category get_category_enum(string s);

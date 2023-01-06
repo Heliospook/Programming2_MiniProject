@@ -5,6 +5,13 @@
 #include "../ecomm/Products.h"
 using namespace std;
 
+DemoPlatform::DemoPlatform(){
+    Globals global;
+    //wiping both files clean on instantiation of platform
+    freopen(global.from_platform.c_str(), "w", stdout);
+    freopen(global.to_platfrom.c_str(), "w", stdout);
+}
+
 bool DemoPlatform::add_seller(Seller* seller) {
     // error check
     if (seller == NULL) { 
@@ -17,8 +24,8 @@ bool DemoPlatform::add_seller(Seller* seller) {
 void DemoPlatform::process_requests() {
     Globals global;
     ifstream file(global.to_platfrom);
-    freopen(global.from_platform.c_str(), file_open_mode.c_str(), stdout);
-    file_open_mode = "a";
+    freopen(global.from_platform.c_str(), "a", stdout);
+
     string s;
 
     vector<string> req;
@@ -46,6 +53,8 @@ void DemoPlatform::process_requests() {
 
         if (v[2] == "Start") {
             cout << v[0] << " " << v[1] << " ";  // prints <Portal ID> <RequestID>
+
+            // iterating the enum
             for (Globals::Category cat = Globals::Category::Enum_start; cat != Globals::Category::Enum_end; cat = static_cast<Globals::Category>(static_cast<int>(cat) + 1)) {
                 if (cat != Globals::Category::Enum_start)cout << global.get_category_name(cat) << " ";
 		    }
@@ -53,10 +62,12 @@ void DemoPlatform::process_requests() {
         }
 
         else if (v[2] == "List") {
-            
+
+            // to what category does it belong to?
             Globals::Category category = global.get_category_enum(v[3]);
+
+            // iterate all the seller and search the product
             for (Seller* seller : sellers) {
-                
                 vector<Products*> products = seller->find_products(category);
                 for (auto prod : products) {
                     cout << v[0] << " " << v[1] << " ";  // prints <Portal ID> <RequestID>
@@ -66,11 +77,13 @@ void DemoPlatform::process_requests() {
         }
 
         else if (v[2] == "Buy") {
+            // changing string to integer
             int quantity;
             stringstream ss(v[4]);
             ss >> quantity;
             cout << v[0] << " " << v[1] << " ";  // prints <Portal ID> <RequestID>
-            int flag = 0;
+
+            int flag = 0; // flag for whether transaction was successfull or not
             for (Seller* seller : sellers) {
                 if (seller->buy_product(v[3], quantity)) {
                     flag = 1;

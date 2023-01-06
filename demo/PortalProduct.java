@@ -15,7 +15,7 @@ public class PortalProduct extends Product{
         int n = line.length;
         this.Name = "";
         for (int i = 2; i <= n-4; i++) {
-            this.Name += line[i];
+            this.Name += line[i] + (i == n-4 ? "" : " ");
         }
         this.ProductID = line[n-3];
         this.Price = Float.parseFloat(line[n-2]);
