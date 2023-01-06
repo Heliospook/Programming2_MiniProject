@@ -1,3 +1,4 @@
+import demo.DemoPortal;
 import java.util.Scanner;
 
 public class PortalMain {

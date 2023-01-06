@@ -1,8 +1,8 @@
 #include<bits/stdc++.h>
 #include "DemoPlatform.h"
-#include "Seller.h"
-#include "Globals.h"
-#include "Products.h"
+#include "../ecomm/Seller.h"
+#include "../ecomm/Globals.h"
+#include "../ecomm/Products.h"
 using namespace std;
 
 bool DemoPlatform::add_seller(Seller* seller) {
@@ -27,7 +27,6 @@ void DemoPlatform::process_requests() {
         req.push_back(s);
     }
 
-    clog << "req size : " << req.size() << endl;
 
     // processing requests
     for (auto s1 : req) {

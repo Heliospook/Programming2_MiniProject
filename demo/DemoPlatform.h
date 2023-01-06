@@ -1,9 +1,9 @@
 #ifndef DEMO_PLATFORM
 #define DEMO_PLATFORM
 
-#include "Platform.h"
 #include <bits/stdc++.h>
-#include "Seller.h"
+#include "../ecomm/Platform.h"
+#include "../ecomm/Seller.h"
 
 using namespace std;
 

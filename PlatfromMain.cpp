@@ -1,9 +1,18 @@
 #include<bits/stdc++.h>
-#include"DemoPlatform.h"
-#include"Seller.h"
-#include"Seller016.h"
-#include"Book.h"
-#include"Products.h"
+#include"./demo/DemoPlatform.h"
+#include"./ecomm/Seller.h"
+#include"./ecomm/Seller016.h"
+#include"./ecomm/Book.h"
+#include"./ecomm/Products.h"
+#include"./ecomm/Globals.h"
+
+#include"./demo/DemoPlatform.cpp"
+#include"./ecomm/Seller.cpp"
+#include"./ecomm/Seller016.cpp"
+#include"./ecomm/Book.cpp"
+#include"./ecomm/Products.cpp"
+#include"./ecomm/Globals.cpp"
+
 
 using namespace std;
 

@@ -11,7 +11,6 @@ class Book: public Products {
     
 public:
     Book(string prod_id, string nam, float prc, int qnty);
-    
 };
 
 #endif

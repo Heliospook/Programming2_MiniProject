@@ -12,10 +12,14 @@ public class PortalProduct extends Product{
     private int Quantity;
 
     public PortalProduct(String[] line){
-        this.Name = line[2];
-        this.ProductID = line[3];
-        this.Price = Float.parseFloat(line[4]);
-        this.Quantity = Integer.parseInt(line[5]);
+        int n = line.length;
+        this.Name = "";
+        for (int i = 2; i <= n-4; i++) {
+            this.Name += line[i];
+        }
+        this.ProductID = line[n-3];
+        this.Price = Float.parseFloat(line[n-2]);
+        this.Quantity = Integer.parseInt(line[n-1]);
     }
 
     public Globals.Category getCategory(){ return Category.Book; }

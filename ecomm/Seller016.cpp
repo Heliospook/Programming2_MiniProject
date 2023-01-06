@@ -19,12 +19,10 @@ Seller016::Seller016(string id):Seller(id){
 };
 
 void Seller016::add_platform(Platform* the_platform) {
-    clog << "Added platform\n" << endl;
     the_platform->add_seller(this);
 }
 
 void Seller016::add_product(Products* prod, Globals::Category category) {
-    clog << "added product\n";
     category_to_list_map[category].push_back(prod);
 };
 

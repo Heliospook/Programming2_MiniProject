@@ -1,4 +1,4 @@
-#ifndef SELLER016_h
+#ifndef SELLER016_H
 #define SELLER016_H
 
 #include<bits/stdc++.h>
