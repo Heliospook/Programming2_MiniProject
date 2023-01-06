@@ -10,7 +10,7 @@ using namespace std;
 class Platform {
 protected:
 	vector<Seller*> sellers;
-	map<string,int> done_req;
+	map<pair<string, string>,int> done_req;
 
 public:
 	virtual bool add_seller(Seller* seller){};

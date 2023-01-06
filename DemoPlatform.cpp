@@ -17,7 +17,8 @@ bool DemoPlatform::add_seller(Seller* seller) {
 void DemoPlatform::process_requests() {
     Globals global;
     ifstream file(global.to_platfrom);
-    freopen(global.from_platform.c_str(), "w", stdout);
+    freopen(global.from_platform.c_str(), file_open_mode.c_str(), stdout);
+    file_open_mode = "a";
     string s;
 
     vector<string> req;
@@ -26,7 +27,7 @@ void DemoPlatform::process_requests() {
         req.push_back(s);
     }
 
-    cerr << "req size : " << req.size() << endl;
+    clog << "req size : " << req.size() << endl;
 
     // processing requests
     for (auto s1 : req) {
@@ -38,6 +39,11 @@ void DemoPlatform::process_requests() {
         while (ss >> temp) {
             v.push_back(temp);
         }
+
+        if (done_req.find({v[0],v[1]}) != done_req.end()) {
+            continue;
+        }
+        done_req[{v[0],v[1]}] = 1;
 
         if (v[2] == "Start") {
             cout << v[0] << " " << v[1] << " ";  // prints <Portal ID> <RequestID>
