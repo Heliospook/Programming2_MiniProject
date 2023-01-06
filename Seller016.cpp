@@ -11,11 +11,11 @@ Seller016::Seller016(string id):Seller(id){
     Products* book3 = new Book("book4", "book019", 69.70, 693);
     Products* book4 = new Book("book5", "book020", 69.6969, 6969);
 
-    product_list.push_back(book);
-    product_list.push_back(book1);
-    product_list.push_back(book2);
-    product_list.push_back(book3);
-    product_list.push_back(book4);
+    category_to_list_map[Globals::Category::Book].push_back(book);
+    category_to_list_map[Globals::Category::Book].push_back(book1);
+    category_to_list_map[Globals::Category::Book].push_back(book2);
+    category_to_list_map[Globals::Category::Book].push_back(book3);
+    category_to_list_map[Globals::Category::Book].push_back(book4);
 };
 
 void Seller016::add_platform(Platform* the_platform) {
@@ -23,45 +23,44 @@ void Seller016::add_platform(Platform* the_platform) {
     the_platform->add_seller(this);
 }
 
-void Seller016::add_product(Products* prod) {
+void Seller016::add_product(Products* prod, Globals::Category category) {
     clog << "added product\n";
-    product_list.push_back(prod);
+    category_to_list_map[category].push_back(prod);
 };
 
 vector<Products*> Seller016::find_products(Globals::Category which_one) {
-    vector<Products*> filtered;
-    Globals global;
-    for (auto prod : product_list) {
-        if (prod->get_category() == which_one) {
-            filtered.push_back(prod);
-        }
-    }
-    return filtered;
+    return category_to_list_map[which_one];
 }
 
 bool Seller016::buy_product(string product_id, int quantity) {
     int available = 0;
 
-    for (auto prod : product_list) {
-        if (prod->get_product_id() == product_id) {
-            available = prod->get_quantity();
+    for (auto key_value : category_to_list_map) {
+        for (auto prod : key_value.second) {
+            if (prod->get_product_id() == product_id) {
+                available = prod->get_quantity();
+            }
         }
     }
 
     if (available < quantity) {
         return false;
     }
-    vector<Products*> new_list;
+    
     int saved = available - quantity;
-    for (auto prod : product_list) {
-        if (prod->get_product_id() == product_id) {
-            prod->set_quantity(saved);
-            new_list.push_back(prod);
+    for (auto &key_value : category_to_list_map) {
+        vector<Products*> new_list;
+        for (auto prod : key_value.second) {
+            if (prod->get_product_id() == product_id) {
+                prod->set_quantity(saved);
+                new_list.push_back(prod);
+            }
+            else {
+                new_list.push_back(prod);
+            }
         }
-        else {
-            new_list.push_back(prod);
-        }
+        key_value.second = new_list;
+        
     }
-    product_list = new_list;
     return true;
 }

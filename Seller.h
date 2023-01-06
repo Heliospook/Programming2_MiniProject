@@ -19,7 +19,7 @@ public:
 
 	virtual void add_platform(Platform* the_platform){};
 
-	virtual void add_product(Products* prod){};
+	virtual void add_product(Products* prod, Globals::Category category){};
 
 	virtual vector<Products*> find_products(Globals::Category which_one){};
 
